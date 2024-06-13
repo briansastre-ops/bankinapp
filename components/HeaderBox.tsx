@@ -1,22 +1,23 @@
-import React from 'react'
+import React from 'react';
 
-const HeaderBox = ({type= "title", title,    subtext, user}: HeaderBoxProps) => {
+// Componente `HeaderBox` que recibe `type`, `title`, `subtext` y `user` como props
+const HeaderBox = ({ type = "title", title, subtext, user }: HeaderBoxProps) => {
   return (
-    <div className='header-box'>
-      <h1 className='header-box-title'>
-        {title}
-        {type === 'greeting' && (
+    <div className='header-box'> {/* Contenedor principal de la caja del encabezado */}
+      <h1 className='header-box-title'> {/* Título del encabezado */}
+        {title} 
+        {type === 'greeting' && ( // Si el tipo es 'greeting', muestra el nombre de usuario
           <span className='text-bankGradient'>
-            &nbsp;{user}
+            &nbsp;{user} {/* Espacio seguido del nombre de usuario */}
           </span>
         )}
       </h1>
 
-      <p className='header-box-subtext'>
+      <p className='header-box-subtext'> {/* Subtexto del encabezado */}
         {subtext}
       </p>
     </div>
   )
 }
 
-export default HeaderBox
+export default HeaderBox; // Exportando el componente `HeaderBox`

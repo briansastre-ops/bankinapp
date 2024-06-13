@@ -1,13 +1,15 @@
-import { Configuration, PlaidApi, PlaidEnvironments } from 'plaid';
+import { Configuration, PlaidApi, PlaidEnvironments } from 'plaid'; // Importando módulos de la biblioteca Plaid
 
+// Configuración de la API de Plaid
 const configuration = new Configuration({
-  basePath: PlaidEnvironments.sandbox,
+  basePath: PlaidEnvironments.sandbox, // Configurando el entorno de sandbox de Plaid
   baseOptions: {
-    headers: {
-      'PLAID-CLIENT-ID': process.env.PLAID_CLIENT_ID,
-      'PLAID-SECRET': process.env.PLAID_SECRET,
+    headers: { // Configurando los encabezados de la solicitud
+      'PLAID-CLIENT-ID': process.env.PLAID_CLIENT_ID, // Incluyendo el ID del cliente desde las variables de entorno
+      'PLAID-SECRET': process.env.PLAID_SECRET, // Incluyendo el secreto del cliente desde las variables de entorno
     }
   }
-})
+});
 
+// Creando una instancia de la API de Plaid con la configuración definida
 export const plaidClient = new PlaidApi(configuration);
