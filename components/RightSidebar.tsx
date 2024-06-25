@@ -1,4 +1,7 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
+import BankCards from './BankCards'
 
 const RightSidebar = ({user, transactions,banks}: RightSidebarProps) => {
     return (
@@ -20,9 +23,44 @@ const RightSidebar = ({user, transactions,banks}: RightSidebarProps) => {
                 </div>
         </section>
         <section className='banks'>
-            <div className='flex w-full'>
-
+            <div className='flex w-full justify-between'>
+                <h2 className='header-2'>
+                    My Banks
+                </h2>
+                <Link href="/" className='flex gap-2'>
+                    <Image
+                        src="/icons/plus.svg"
+                        width={20}
+                        height={20}
+                        alt="Add Bank"
+                    />
+                    <h2 className='text-14 font-semibold text-gray-600'>
+                        Add Banks
+                    </h2>
+                </Link>
             </div>
+            {banks.length> 0 && (
+                <div className='relative flex  flex-1 flex-col items-center justify-center gap-5'>
+                    <div className='relative z-10'>
+                        <BankCards
+                            key={banks[0].$id}
+                            account={banks[0]}
+                            userName={`${user.firstName} ${user.lastName}`}
+                            showBalance={false}
+                        />
+                    </div>
+                    {banks[1] &&(
+                        <div className='absolute right-0 top-8 z-0 w-[90%]'>
+                            <BankCards
+                                key={banks[1].$id}
+                                account={banks[1]}
+                                userName={`${user.firstName} ${user.lastName}`}
+                                showBalance={false}
+                            />
+                        </div>
+                    )}
+                </div>
+            )}
         </section>
     </aside>
     )
@@ -30,4 +68,3 @@ const RightSidebar = ({user, transactions,banks}: RightSidebarProps) => {
 
 export default RightSidebar
 
-/////1 :21:56
