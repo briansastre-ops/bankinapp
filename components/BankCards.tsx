@@ -63,5 +63,3 @@ const BankCards = ({account,userName,showBalance = true} : CreditCardProps) => {
 
 export default BankCards
 
-
-//////1 :29 :10
